@@ -1,13 +1,41 @@
+import { lazy, Suspense } from "react";
+
+import { Switch, Route } from "react-router-dom";
+
 import Section from "./Section/Section";
-import PhoneBook from "./Phonebook/Phonebook";
-import Contacts from "./Contacts/Contacts";
+import Navigation from "../Components/Navigation/Navigation";
+// import PhoneBook from "./Phonebook/Phonebook";
+// import Contacts from "./Contacts/Contacts";
+
+const HomePage = lazy(() => import("./views/HomePage/HomePage"));
+const EntryPage = lazy(() => import("./views/EntryPage/EntryPage"));
+const RegistrationPage = lazy(() =>
+  import("./views/RegistrationPage/RegistrationPage")
+);
 
 export default function App() {
   return (
     <Section>
-      <PhoneBook />
+      <Navigation />
 
-      <Contacts />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+
+          <Route exact path="/registration">
+            <EntryPage />
+          </Route>
+
+          <Route path="/entry">
+            <RegistrationPage />
+          </Route>
+        </Switch>
+      </Suspense>
+
+      {/* <PhoneBook />
+      <Contacts /> */}
     </Section>
   );
 }

@@ -1,0 +1,20 @@
+h2 {
+  padding-left: 50px;
+}
+
+.ListTrendingMovies {
+  margin-top: 25px;
+  padding-left: 50px;
+}
+
+.LinkMovies {
+  margin-bottom: 10px;
+}
+
+.LinkMovies:hover {
+  color: red;
+}
+
+.LinkElementMovies:hover {
+  color: red;
+}
