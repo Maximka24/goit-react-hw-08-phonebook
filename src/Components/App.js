@@ -25,11 +25,11 @@ export default function App() {
           </Route>
 
           <Route exact path="/registration">
-            <EntryPage />
+            <RegistrationPage />
           </Route>
 
           <Route path="/entry">
-            <RegistrationPage />
+            <EntryPage />
           </Route>
         </Switch>
       </Suspense>
