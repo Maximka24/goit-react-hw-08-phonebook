@@ -65,18 +65,6 @@ export default function RegistrationPage() {
     <form className={s.ContainerForm} /*onSubmit={onSubmitForm}*/>
       <h2 className={s.Title}>Регистрация:</h2>
       <label>
-        Логин:
-        <input
-          type="text"
-          name="login"
-          // value={name}
-          // onChange={handleChangeInput}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Логин может состоять только из букв, апострофа, тире и пробелов."
-          required
-        />
-      </label>
-      <label>
         Имя:
         <input
           type="text"
