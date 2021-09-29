@@ -8,6 +8,7 @@ import Navigation from "../Components/Navigation/Navigation";
 // import Contacts from "./Contacts/Contacts";
 
 const HomePage = lazy(() => import("./views/HomePage/HomePage"));
+const ContactsPage = lazy(() => import("./views/ContactsPage/ContactsPage"));
 const EntryPage = lazy(() => import("./views/EntryPage/EntryPage"));
 const RegistrationPage = lazy(() =>
   import("./views/RegistrationPage/RegistrationPage")
@@ -24,7 +25,11 @@ export default function App() {
             <HomePage />
           </Route>
 
-          <Route exact path="/registration">
+          <Route path="/contacts">
+            <ContactsPage />
+          </Route>
+
+          <Route path="/registration">
             <RegistrationPage />
           </Route>
 

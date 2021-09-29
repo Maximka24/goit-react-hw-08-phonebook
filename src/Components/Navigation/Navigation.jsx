@@ -7,14 +7,24 @@ import RegistrationAndEntry from "./RegistrationAndEntry/RegistrationAndEntry";
 export default function Navigation() {
   return (
     <nav className={s.Navigation}>
-      <NavLink
-        exact
-        activeClassName={s.ActiveNavLink}
-        className={s.NavLink}
-        to="/"
-      >
-        Главная страница
-      </NavLink>
+      <div>
+        <NavLink
+          exact
+          activeClassName={s.ActiveNavLink}
+          className={s.NavLink}
+          to="/"
+        >
+          Главная страница
+        </NavLink>
+        <NavLink
+          exact
+          activeClassName={s.ActiveNavLink}
+          className={s.NavContacts}
+          to="/contacts"
+        >
+          Контакты
+        </NavLink>
+      </div>
 
       <RegistrationAndEntry />
       <SignUpUser />

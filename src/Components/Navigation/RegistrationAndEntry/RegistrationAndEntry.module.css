@@ -19,6 +19,7 @@
   font-size: 24px;
 }
 
+.NavLinkReg:hover,
 .NavLink:hover {
   color: rgb(248, 155, 68);
 }

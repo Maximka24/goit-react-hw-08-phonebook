@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 
 // import * as operation from "../../redux/operation";
@@ -6,8 +6,9 @@
 import s from "./RegistrationPage.module.css";
 
 export default function RegistrationPage() {
-  // const [name, setName] = useState("");
-  // const [number, setNumber] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // const dispatch = useDispatch();
 
@@ -24,53 +25,59 @@ export default function RegistrationPage() {
   //   (contact) => contact.number === number
   // );
 
-  // const handleChangeInput = (e) => {
-  //   const { value } = e.currentTarget;
+  const handleChangeInput = (e) => {
+    const { value } = e.currentTarget;
 
-  //   switch (e.target.name) {
-  //     case "name":
-  //       setName(value);
-  //       break;
+    switch (e.target.name) {
+      case "name":
+        setName(value);
+        break;
 
-  //     case "number":
-  //       setNumber(value);
-  //       break;
+      case "email":
+        setEmail(value);
+        break;
 
-  //     default:
-  //       return;
-  //   }
-  // };
+      case "password":
+        setPassword(value);
+        break;
 
-  // const onSubmitForm = (e) => {
-  //   if (nameContact && numberContact) {
-  //     e.preventDefault();
-  //     alert("Такой КОНТАКТ уже есть в списке контактов!");
+      default:
+        return;
+    }
+  };
 
-  //     return;
-  //   }
+  const onSubmitForm = (e) => {
+    // if (nameContact && numberContact) {
+    //   e.preventDefault();
+    //   alert("Такой КОНТАКТ уже есть в списке контактов!");
 
-  //   e.preventDefault();
+    //   return;
+    // }
 
-  //   dispatch(operation.fetchAddContacts(name, number));
+    e.preventDefault();
 
-  //   formReset();
-  // };
+    // dispatch(operation.fetchAddContacts(name, number));
 
-  // const formReset = () => {
-  //   setName("");
-  //   setNumber("");
-  // };
+    formReset();
+  };
+
+  const formReset = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
 
   return (
-    <form className={s.ContainerForm} /*onSubmit={onSubmitForm}*/>
+    <form className={s.ContainerForm} onSubmit={onSubmitForm}>
       <h2 className={s.Title}>Регистрация:</h2>
       <label>
         Имя:
         <input
           type="text"
           name="name"
-          // value={name}
-          // onChange={handleChangeInput}
+          placeholder="Введите имя"
+          value={name}
+          onChange={handleChangeInput}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов."
           required
@@ -81,9 +88,9 @@ export default function RegistrationPage() {
         <input
           type="email"
           name="email"
-          // value={number}
-          // onChange={handleChangeInput}
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          placeholder="Введите E-mail"
+          value={email}
+          onChange={handleChangeInput}
           required
         />
       </label>
@@ -92,9 +99,11 @@ export default function RegistrationPage() {
         <input
           type="password"
           name="password"
-          // value={number}
-          // onChange={handleChangeInput}
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          value={password}
+          onChange={handleChangeInput}
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+          placeholder="Введите пароль"
+          title="5 или более символов, в том числе по меньшей мере, одну цифру, одну прописную, одну строчные буквы"
           required
         />
       </label>

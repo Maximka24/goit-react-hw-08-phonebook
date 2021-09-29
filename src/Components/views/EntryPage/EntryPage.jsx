@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 
 // import * as operation from "../../redux/operation";
@@ -6,8 +6,8 @@
 import s from "./EntryPage.module.css";
 
 export default function EntryPage() {
-  // const [name, setName] = useState("");
-  // const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // const dispatch = useDispatch();
 
@@ -24,22 +24,22 @@ export default function EntryPage() {
   //   (contact) => contact.number === number
   // );
 
-  // const handleChangeInput = (e) => {
-  //   const { value } = e.currentTarget;
+  const handleChangeInput = (e) => {
+    const { value } = e.currentTarget;
 
-  //   switch (e.target.name) {
-  //     case "name":
-  //       setName(value);
-  //       break;
+    switch (e.target.name) {
+      case "email":
+        setEmail(value);
+        break;
 
-  //     case "number":
-  //       setNumber(value);
-  //       break;
+      case "password":
+        setPassword(value);
+        break;
 
-  //     default:
-  //       return;
-  //   }
-  // };
+      default:
+        return;
+    }
+  };
 
   // const onSubmitForm = (e) => {
   //   if (nameContact && numberContact) {
@@ -56,10 +56,10 @@ export default function EntryPage() {
   //   formReset();
   // };
 
-  // const formReset = () => {
-  //   setName("");
-  //   setNumber("");
-  // };
+  const formReset = () => {
+    setEmail("");
+    setPassword("");
+  };
 
   return (
     <form className={s.ContainerForm} /*onSubmit={onSubmitForm}*/>
@@ -69,9 +69,9 @@ export default function EntryPage() {
         <input
           type="email"
           name="email"
-          // value={number}
-          // onChange={handleChangeInput}
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          placeholder="Введите E-mail"
+          value={email}
+          onChange={handleChangeInput}
           required
         />
       </label>
@@ -80,9 +80,11 @@ export default function EntryPage() {
         <input
           type="password"
           name="password"
-          // value={number}
-          // onChange={handleChangeInput}
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          value={password}
+          onChange={handleChangeInput}
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+          placeholder="Введите пароль"
+          title="5 или более символов, в том числе по меньшей мере, одну цифру, одну прописную, одну строчные буквы"
           required
         />
       </label>
