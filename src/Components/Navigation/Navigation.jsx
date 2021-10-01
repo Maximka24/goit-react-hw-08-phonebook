@@ -1,10 +1,16 @@
 import { NavLink } from "react-router-dom";
-import s from "./Navigation.module.css";
+import { useSelector } from "react-redux";
+
+import authSelectors from "../../redux/selectors";
 
 import SignUpUser from "./SignUpUser/SignUpUser";
 import RegistrationAndEntry from "./RegistrationAndEntry/RegistrationAndEntry";
 
+import s from "./Navigation.module.css";
+
 export default function Navigation() {
+  const getLogged = useSelector(authSelectors.getLoggedIn);
+
   return (
     <nav className={s.Navigation}>
       <div>
@@ -26,8 +32,7 @@ export default function Navigation() {
         </NavLink>
       </div>
 
-      <RegistrationAndEntry />
-      <SignUpUser />
+      {getLogged ? <SignUpUser /> : <RegistrationAndEntry />}
     </nav>
   );
 }

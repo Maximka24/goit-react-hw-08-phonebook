@@ -1,28 +1,15 @@
 import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-// import * as operation from "../../redux/operation";
-// import selectors from "../../redux/selectors";
+import * as operation from "../../../redux/operation";
+
 import s from "./EntryPage.module.css";
 
 export default function EntryPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const dispatch = useDispatch();
-
-  // const filterListName = useSelector((state) =>
-  //   selectors.phoneBookContacts(state)
-  // );
-
-  // const nameContact = filterListName.some((contact) => contact.name === name);
-
-  // const filterListNumber = useSelector((state) =>
-  //   selectors.phoneBookContacts(state)
-  // );
-  // const numberContact = filterListNumber.some(
-  //   (contact) => contact.number === number
-  // );
+  const dispatch = useDispatch();
 
   const handleChangeInput = (e) => {
     const { value } = e.currentTarget;
@@ -41,20 +28,13 @@ export default function EntryPage() {
     }
   };
 
-  // const onSubmitForm = (e) => {
-  //   if (nameContact && numberContact) {
-  //     e.preventDefault();
-  //     alert("Такой КОНТАКТ уже есть в списке контактов!");
+  const onSubmitForm = (e) => {
+    e.preventDefault();
 
-  //     return;
-  //   }
+    dispatch(operation.logIn({ email, password }));
 
-  //   e.preventDefault();
-
-  //   dispatch(operation.fetchAddContacts(name, number));
-
-  //   formReset();
-  // };
+    formReset();
+  };
 
   const formReset = () => {
     setEmail("");
@@ -62,7 +42,7 @@ export default function EntryPage() {
   };
 
   return (
-    <form className={s.ContainerForm} /*onSubmit={onSubmitForm}*/>
+    <form className={s.ContainerForm} onSubmit={onSubmitForm}>
       <h2 className={s.Title}>Авторизация пользователя:</h2>
       <label>
         Электронная почта:

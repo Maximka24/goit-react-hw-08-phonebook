@@ -1,8 +1,7 @@
 import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-// import * as operation from "../../redux/operation";
-// import selectors from "../../redux/selectors";
+import * as operation from "../../../redux/operation";
 import s from "./RegistrationPage.module.css";
 
 export default function RegistrationPage() {
@@ -10,20 +9,7 @@ export default function RegistrationPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const dispatch = useDispatch();
-
-  // const filterListName = useSelector((state) =>
-  //   selectors.phoneBookContacts(state)
-  // );
-
-  // const nameContact = filterListName.some((contact) => contact.name === name);
-
-  // const filterListNumber = useSelector((state) =>
-  //   selectors.phoneBookContacts(state)
-  // );
-  // const numberContact = filterListNumber.some(
-  //   (contact) => contact.number === number
-  // );
+  const dispatch = useDispatch();
 
   const handleChangeInput = (e) => {
     const { value } = e.currentTarget;
@@ -47,16 +33,9 @@ export default function RegistrationPage() {
   };
 
   const onSubmitForm = (e) => {
-    // if (nameContact && numberContact) {
-    //   e.preventDefault();
-    //   alert("Такой КОНТАКТ уже есть в списке контактов!");
-
-    //   return;
-    // }
-
     e.preventDefault();
 
-    // dispatch(operation.fetchAddContacts(name, number));
+    dispatch(operation.register({ name, email, password }));
 
     formReset();
   };
@@ -103,7 +82,7 @@ export default function RegistrationPage() {
           onChange={handleChangeInput}
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
           placeholder="Введите пароль"
-          title="5 или более символов, в том числе по меньшей мере, одну цифру, одну прописную, одну строчные буквы"
+          title="7 или более символов, в том числе по меньшей мере, одну цифру, одну прописную, одну строчные буквы"
           required
         />
       </label>
