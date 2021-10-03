@@ -1,20 +1,22 @@
-h2 {
+.HomePageInfo {
+  padding: 50px;
+}
+
+.TitleMain {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.TitleHistory {
   padding-left: 50px;
+  text-align: center;
 }
 
-.ListTrendingMovies {
-  margin-top: 25px;
-  padding-left: 50px;
+.TitleInfo {
+  margin-bottom: 50px;
+  text-align: justify;
 }
 
-.LinkMovies {
-  margin-bottom: 10px;
-}
-
-.LinkMovies:hover {
-  color: red;
-}
-
-.LinkElementMovies:hover {
-  color: red;
+.TitleReg {
+  text-align: center;
 }
