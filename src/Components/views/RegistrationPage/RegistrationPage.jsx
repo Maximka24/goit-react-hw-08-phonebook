@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import * as operation from "../../../redux/operation";
+import * as operation from "../../../redux/auth/auth-operation";
 import s from "./RegistrationPage.module.css";
 
 export default function RegistrationPage() {

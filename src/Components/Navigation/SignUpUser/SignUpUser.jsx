@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import s from "./SignUpUser.module.css";
 
 import authSelectors from "../../../redux/selectors";
-import * as operation from "../../../redux/operation";
+import * as operation from "../../../redux/auth/auth-operation";
 
 export default function SignUpUser() {
   const nameUser = useSelector(authSelectors.getNameUser);

@@ -32,31 +32,8 @@ export const logIn = createAsyncThunk("auth/login", async (information) => {
 });
 
 export const logOut = createAsyncThunk("auth/logout", async () => {
-  console.log(123);
   try {
     await axios.post("/users/logout");
     token.unset();
   } catch (error) {}
 });
-
-// export async function fetchRegistrationUser() {
-//   const { data } = await axios.get("http://localhost:3000/contacts");
-
-//   return data;
-// }
-
-// export async function addContacts(name, number) {
-//   const { data } = await axios.post("http://localhost:3000/contacts", {
-//     id: shortid.generate(),
-//     name,
-//     number,
-//   });
-
-//   return data;
-// }
-
-// export async function deleteContacts(id) {
-//   const { data } = await axios.delete(`http://localhost:3000/contacts/${id}/`);
-
-//   return data;
-// }

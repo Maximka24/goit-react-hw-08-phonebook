@@ -1,10 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import authUserReducer from "./auth-slice";
-// import reducersPhoneBook from "./redusers";
+import authUserReducer from "./auth/auth-slice";
+import contactsReducers from "./contacts/contacts-reducers";
 
 const mainReducer = combineReducers({
   authUser: authUserReducer,
-  contacts: [],
+  contactsUser: contactsReducers,
 });
 
 const store = configureStore({
