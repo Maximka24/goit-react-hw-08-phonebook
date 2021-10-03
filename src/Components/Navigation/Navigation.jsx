@@ -22,14 +22,17 @@ export default function Navigation() {
         >
           Главная страница
         </NavLink>
-        <NavLink
-          exact
-          activeClassName={s.ActiveNavLink}
-          className={s.NavContacts}
-          to="/contacts"
-        >
-          Контакты
-        </NavLink>
+
+        {getLogged && (
+          <NavLink
+            exact
+            activeClassName={s.ActiveNavLink}
+            className={s.NavContacts}
+            to="/contacts"
+          >
+            Телефонная книга
+          </NavLink>
+        )}
       </div>
 
       {getLogged ? <SignUpUser /> : <RegistrationAndEntry />}

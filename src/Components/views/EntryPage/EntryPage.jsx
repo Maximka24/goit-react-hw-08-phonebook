@@ -43,7 +43,7 @@ export default function EntryPage() {
 
   return (
     <form className={s.ContainerForm} onSubmit={onSubmitForm}>
-      <h2 className={s.Title}>Авторизация пользователя:</h2>
+      <h2 className={s.Title}>Пожулайста авторизируйтесь:</h2>
       <label>
         Электронная почта:
         <input

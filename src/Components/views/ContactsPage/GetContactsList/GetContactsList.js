@@ -14,7 +14,7 @@ export default function GetFilterContacts() {
 
   return (
     <div className={s.Container}>
-      <h2 className={s.Title}>Список контактов</h2>
+      <h2 className={s.Title}>Список контактов:</h2>
       <label>
         Введите имя контакта:
         <input

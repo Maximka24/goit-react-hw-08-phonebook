@@ -1,7 +1,8 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import actions from "../../../../../redux/contacts/contacts-actions";
+
+import * as operation from "../../../../../redux/contacts/contacts-operation";
 
 import s from "./ContactFilterList.module.css";
 
@@ -29,7 +30,7 @@ export default function ContactFilterList(/*{ mainListContact, onDeleteContact }
           <button
             className={s.Btn}
             onClick={() => {
-              dispatch(actions.deleteContact(id));
+              dispatch(operation.fetchDeleteContacts(id));
             }}
           >
             Delete contact

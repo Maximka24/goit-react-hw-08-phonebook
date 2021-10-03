@@ -1,11 +1,17 @@
 import { lazy, Suspense } from "react";
 
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import * as operation from "../redux/auth/auth-operation";
 
 import Section from "./Section/Section";
 import Navigation from "../Components/Navigation/Navigation";
-// import PhoneBook from "./Phonebook/Phonebook";
-// import Contacts from "./Contacts/Contacts";
+
+import PrivateRoute from "./views/PrivateRoute";
+import PublicRoute from "./views/PublicRoute";
 
 const HomePage = lazy(() => import("./views/HomePage/HomePage"));
 const ContactsPage = lazy(() => import("./views/ContactsPage/ContactsPage"));
@@ -15,32 +21,38 @@ const RegistrationPage = lazy(() =>
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(
+    (e) => {
+      dispatch(operation.fetchCurrentUser());
+    },
+    [dispatch]
+  );
+
   return (
     <Section>
       <Navigation />
 
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route exact path="/">
+          <PublicRoute exact path="/">
             <HomePage />
-          </Route>
+          </PublicRoute>
 
-          <Route path="/contacts">
-            <ContactsPage />
-          </Route>
-
-          <Route path="/registration">
+          <PublicRoute path="/registration" redirected>
             <RegistrationPage />
-          </Route>
+          </PublicRoute>
 
-          <Route path="/entry">
+          <PublicRoute path="/entry" redirected>
             <EntryPage />
-          </Route>
+          </PublicRoute>
+
+          <PrivateRoute path="/contacts">
+            <ContactsPage />
+          </PrivateRoute>
         </Switch>
       </Suspense>
-
-      {/* <PhoneBook />
-      <Contacts /> */}
     </Section>
   );
 }
