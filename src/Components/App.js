@@ -40,11 +40,11 @@ export default function App() {
             <HomePage />
           </PublicRoute>
 
-          <PublicRoute path="/registration" redirected>
+          <PublicRoute exact path="/registration" redirected>
             <RegistrationPage />
           </PublicRoute>
 
-          <PublicRoute path="/entry" redirected>
+          <PublicRoute exact path="/entry" redirected>
             <EntryPage />
           </PublicRoute>
 
